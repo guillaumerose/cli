@@ -6,6 +6,7 @@ import (
 	"regexp"
 	"strings"
 
+	"github.com/docker/cli/cli/config/configfile"
 	"github.com/pkg/errors"
 	"github.com/spf13/cobra"
 )
@@ -26,6 +27,10 @@ type Plugin struct {
 
 	// ShadowedPaths contains the paths of any other plugins which this plugin takes precedence over.
 	ShadowedPaths []string `json:",omitempty"`
+}
+
+type PluginCli interface {
+	ConfigFile() *configfile.ConfigFile
 }
 
 // newPlugin determines if the given candidate is valid and returns a

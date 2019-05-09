@@ -1,7 +1,6 @@
 package manager
 
 import (
-	"github.com/docker/cli/cli/command"
 	"github.com/spf13/cobra"
 )
 
@@ -31,7 +30,7 @@ const (
 // AddPluginCommandStubs adds a stub cobra.Commands for each valid and invalid
 // plugin. The command stubs will have several annotations added, see
 // `CommandAnnotationPlugin*`.
-func AddPluginCommandStubs(dockerCli command.Cli, cmd *cobra.Command) error {
+func AddPluginCommandStubs(dockerCli PluginCli, cmd *cobra.Command) error {
 	plugins, err := ListPlugins(dockerCli, cmd)
 	if err != nil {
 		return err
